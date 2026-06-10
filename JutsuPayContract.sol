@@ -59,11 +59,9 @@ contract JutsuPay {
         return noviTransfer.id;
     }
     
-    // 2. Verifikuj transfer (PENDING -> COMPLETED)
     function verifikujTransfer(uint256 transferId) public {
         require(transferId > 0 && transferId < nextId, "Transfer ne postoji");
         
-        // Indeks u nizu je transferId - 1
         uint256 index = transferId - 1;
         
         require(transferi[index].status == Status.PENDING, "Transfer nije PENDING");
